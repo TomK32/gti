@@ -52,7 +52,7 @@
 #define SOPEL_NAME "sopel"
 
 #ifndef POPEL_SPEED
-#define POPEL_SPEED 5
+#define POPEL_SPEED 1
 #endif
 
 int  term_width(void);
@@ -61,7 +61,7 @@ void open_term();
 void move_to_top(void);
 void line_at(int start_x, const char *s);
 void draw_car(int x);
-void clear_car(int x)
+void clear_car(int x);
 
 int TERM_WIDTH;
 FILE *TERM_FH;
@@ -75,7 +75,7 @@ int main(int argc, char **argv)
 
     open_term();
     TERM_WIDTH = term_width();
-    SLEEP_DELAY = 1000000 / (TERM_WIDTH + GTI_SPEED);
+    SLEEP_DELAY = 10000000 / (TERM_WIDTH + POPEL_SPEED);
 
     init_space();
     for (i = -20; i < TERM_WIDTH; i++) {

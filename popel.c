@@ -1,5 +1,5 @@
 /*
- * gti - a git launcher
+ * popel - a sopel launcher
  *
  * Copyright 2012 by Richard Wossal <richard@r-wos.org>
  *
@@ -27,9 +27,9 @@
 // usleep() doesn't exist on MSVC, instead use Sleep() from Win32 API
 #define usleep(a) Sleep((a) / 1000)
 
-// exec*() on MSVC makes the parent process exit; that means that gti.exe will finish as git is starting,
-// which causes cmd.exe to print its prompt over git's output (because it sees that the child process has
-// finished). The solution is to use synchronous spawn*(): it will make gti.exe to wait until git finishes.
+// exec*() on MSVC makes the parent process exit; that means that popel.exe will finish as sopel is starting,
+// which causes cmd.exe to print its prompt over sopel's output (because it sees that the child process has
+// finished). The solution is to use synchronous spawn*(): it will make popel.exe to wait until sopel finishes.
 #define execv(a, b) do { i = _spawnv(_P_WAIT, (a), (b)); if (i != -1) return i; } while(0)
 #define execvp(a, b) do { i = _spawnvp(_P_WAIT, (a), (b)); if (i != -1) return i; } while(0)
 
@@ -49,10 +49,10 @@
 #endif
 
 
-#define GIT_NAME "git"
+#define SOPEL_NAME "sopel"
 
-#ifndef GTI_SPEED
-#define GTI_SPEED 50
+#ifndef POPEL_SPEED
+#define POPEL_SPEED 5
 #endif
 
 int  term_width(void);
@@ -61,7 +61,7 @@ void open_term();
 void move_to_top(void);
 void line_at(int start_x, const char *s);
 void draw_car(int x);
-void clear_car(int x);
+void clear_car(int x)
 
 int TERM_WIDTH;
 FILE *TERM_FH;
@@ -70,7 +70,7 @@ int SLEEP_DELAY;
 int main(int argc, char **argv)
 {
     int i;
-    char *git_path;
+    char *sopel_path;
     (void) argc;
 
     open_term();
@@ -85,14 +85,14 @@ int main(int argc, char **argv)
     }
     move_to_top();
     fflush(TERM_FH);
-    git_path = getenv("GIT");
-    if (git_path) {
-      execv(git_path, argv);
+    sopel_path = getenv("SOPEL");
+    if (sopel_path) {
+      execv(sopel_path, argv);
     } else {
-      execvp(GIT_NAME, argv);
+      execvp(SOPEL_NAME, argv);
     }
     /* error in exec if we land here */
-    perror(GIT_NAME);
+    perror(SOPEL_NAME);
     return 1;
 }
 
@@ -208,7 +208,7 @@ void draw_car(int x)
     line_at(x, "   ,---------------.");
     line_at(x, "  /  /``````|``````\\\\");
     line_at(x, " /  /_______|_______\\\\________");
-    line_at(x, "|]      GTI |'       |        |]");
+    line_at(x, "|]    POPEL |'       |        |]");
     if (x % 2) {
     line_at(x, "=  .-:-.    |________|  .-:-.  =");
     line_at(x, " `  -+-  --------------  -+-  '");

@@ -1,20 +1,10 @@
-gti
+popel
 ===
 
-Just a silly `git` launcher, basically. Inspired by `sl`.
+Just a silly [`sopel`](https://sopel.chat) launcher, basically. Inspired by `sl` and `popel`.
 
 Build and Install
 -----------------
-
-From a package system:
-* [Fedora](https://admin.fedoraproject.org/pkgdb/package/rpms/gti/)
-* it's in ArchLinux' AUR as [gti-git](https://aur.archlinux.org/packages/gti-git/) and as [gti](https://aur.archlinux.org/packages/gti/)
-* [Gentoo](https://packages.gentoo.org/packages/dev-vcs/gti)
-* [Nix/NixOS](https://github.com/NixOS/nixpkgs/pull/13453)
-* [FreeBSD ports](http://svnweb.freebsd.org/ports/head/games/gti/)
-* [OpenBSD ports](http://openports.se/games/gti)
-* [Homebrew/MacOS X](http://braumeister.org/formula/gti)
-* ([it's not in Debian yet](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=705850))
 
 From source:
 
@@ -31,12 +21,13 @@ For example:
 Usage
 -----
 
-Try typing `git` really fast, on an unfamiliar keyboard.
+Try typing `sopel` really fast, on an unfamiliar keyboard.
 
 Author and License
 ------------------
 
 Copyright 2012 by Richard Wossal <richard@r-wos.org>
+Copyright 2017 by Aurel W. and Thomas R. Koll
 
 Permission to use, copy, modify, distribute, and sell this software
 and its documentation for any purpose is hereby granted without fee,
